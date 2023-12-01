@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Stock Portfolio
+{% endblock %}
+
+{% block content %}
+    <br>
+    {% if stocks and not stocks.Error %}
+        {% for stock in stocks %}
+            <h3>{{stock.companyName}}</h3>
+            <ul>
+                <li>Symbol : {{stock.symbol}}</li>
+                <li>Primary Exchange : {{stock.primaryExchange}}</li>
+                <li>Open : {{stock.open}}</li>
+                <li>Close : {{stock.close}}</li>
+                <li>High : {{stock.high}}</li>
+                <li>Low : {{stock.low}}</li>
+                <li>Latest Price : {{stock.latestPrice}}</li>
+                <li>Previous Close : {{stock.previousClose}}</li>
+                <li>Market Cap :{{stock.marketCap}}</li>
+                <li>PE Ratio : {{stock.peRatio}}</li>
+                <li>Week52High : {{stock.week52High}}</li>
+                <li>Week52Low : {{stock.week52Low}}</li>
+                <li>YTD Change : {{stock.ytdChange}}</li>
+            </ul>
+        {% endfor %}
+    {% elif stocks.Error %}
+        <p>{{stocks.Error}}</p>
+    {% else %}
+        <div>
+        </div>
+    {% endif%}
+{% endblock %}
