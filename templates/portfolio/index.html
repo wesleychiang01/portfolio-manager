@@ -5,5 +5,37 @@ Stock Portfolio
 {% endblock %}
 
 {% block content %}
-    <h1>Hello Shit</h1>
+    <br><br><br>
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Portfolio Summary</h2>
+        <a href="{% url 'portfolio_add' %}" class="btn btn-primary">Add Portfolio</a>
+    </div>
+    <hr>
+
+    <!-- holding_table.html -->
+    <table>
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Trade Date</th>
+                <th>Quantity</th>
+                <th>Unit/Per Share</th>
+                <th>Brokerage</th>
+                <!-- Add more table headers as needed for other fields -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for holding in holdings %}
+                <tr>
+                    <td>{{ holding.company }}</td>
+                    <td>{{ holding.trade_date }}</td>
+                    <td>{{ holding.quantity }}</td>
+                    <td>{{ holding.unit_per_share }}</td>
+                    <td>{{ holding.brokerage }}</td>
+                    <!-- Add more table cells as needed for other fields -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}

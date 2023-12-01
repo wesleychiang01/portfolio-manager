@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Stock Portfolio
+{% endblock %}
+
+{% block content %}
+    <br><br><br>
+    <h4 class="mb-3">Enter Holding Details</h4>
+    
+    <form method="post" action="{% url 'enter_holding_details' %}" >
+        {% csrf_token %}
+        <!-- {{ form.as_p }} -->
+
+        <div class="row g-3">
+            <div class="col-6">
+                <label for="company" class="form-label">Enter by company name or code</label>
+                <div class="input-group has-validation">
+                    <span class="input-group-text">@</span>
+                    <input type="text" class="form-control" name="company" placeholder="Company Name or Code" required>
+                    <div class="invalid-feedback">
+                        Please enter the company name or code.
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-6">
+                <label for="tradeDate" class="form-label">Trade Date</label>
+                <input type="date" class="form-control" name="trade_date" required>
+                <div class="invalid-feedback">
+                    Please select the trade date.
+                </div>
+            </div>
+        
+            <div class="col-6">
+                <label for="quantity" class="form-label">Quantity <span class="text-muted">(Optional)</span></label>
+                <input type="number" class="form-control" name="quantity" placeholder="Enter Quantity">
+                <div class="invalid-feedback">
+                    Please enter a valid quantity.
+                </div>
+            </div>
+        
+            <div class="col-6">
+                <label for="unitPerShare" class="form-label">Unit/per share</label>
+                <input type="number" class="form-control" name="unit_per_share" placeholder="Enter Unit/Per Share" required>
+                <div class="invalid-feedback">
+                    Please enter the unit/per share value.
+                </div>
+            </div>
+        
+            <div class="col-6">
+                <label for="brokerage" class="form-label">Brokerage <span class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" name="brokerage" placeholder="Enter Brokerage">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 text-end">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

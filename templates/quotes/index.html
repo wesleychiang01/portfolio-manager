@@ -5,7 +5,7 @@ Stock Portfolio
 {% endblock %}
 
 {% block content %}
-    <br>
+    <br><br><br>
     {% if stocks and not stocks.Error %}
         {% for stock in stocks %}
             <h3>{{stock.companyName}}</h3>

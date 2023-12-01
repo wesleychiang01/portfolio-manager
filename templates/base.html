@@ -15,33 +15,33 @@
     {% endblock %}
   </title>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">DodgeToMoon</a>
+        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Dashboard</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'welcome' %}">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
           </ul>
           <form method="POST" action="{% url 'home' %}" class="d-flex">
             {% csrf_token %}
-            <input class="form-control me-2" type="search" placeholder="Stock Ticker or Name" aria-label="Search" name="stock_ticker">
-            <button class="btn btn-outline-success" type="submit">Quick Search</button>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="stock_ticker">
+            <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
       </div>
     </nav>
-    
 
     <div class="container">
         {% block content %}
